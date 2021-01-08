@@ -1,0 +1,12 @@
+hash -d cac=/home/volk/.cache 
+hash -d cf=/home/volk/.config 
+hash -d D=/home/volk/Downloads 
+hash -d d=/home/volk/Documents 
+hash -d dt=/home/volk/.local/share 
+hash -d h=/home/volk 
+hash -d m=/home/volk/Music 
+hash -d mn=/mnt 
+hash -d pp=/home/volk/Pictures 
+hash -d sc=/home/volk/.local/bin 
+hash -d src=/home/volk/.local/src 
+hash -d vv=/home/volk/Videos 
