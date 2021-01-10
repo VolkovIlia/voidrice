@@ -59,6 +59,21 @@ export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 
+#TexLive
+export TEXMFDIST="/usr/share/texmf-dist"
+export TEXMFLOCAL="/usr/local/share/texmf:/usr/share/texmf"
+export TEXMFSYSVAR="/var/lib/texmf"
+export TEXMFSYSCONFIG="/etc/texmf"
+export TEXMFHOME="$HOME/texmf"
+export TEXMFVAR="$HOME/.texlive/texmf-var"
+export TEXMFCONFIG="$HOME/.texlive/texmf-config"
+export TEXMFCACHE="$TEXMFSYSVAR;$TEXMFVAR"
+
+
+# BIBTEX
+export BIB="$HOME/Library/bibtex/lib.bib"
+export BIB_PDF_PATH="$HOME/Library/PDFs"
+
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\
 fi=📃:\
