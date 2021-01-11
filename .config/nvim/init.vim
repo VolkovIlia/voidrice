@@ -17,6 +17,17 @@ Plug 'vimwiki/vimwiki'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
+Plug 'vimwiki/vimwiki'
+Plug 'preservim/tagbar'
+Plug 'blindFS/vim-taskwarrior'
+Plug 'mattn/calendar-vim'
+Plug 'SirVer/ultisnips'
+Plug 'lyokha/vim-xkbswitch'
+Plug 'tools-life/taskwiki'
+Plug 'morhetz/gruvbox'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'vim-pandoc/vim-pandoc'
 call plug#end()
 
 set title
@@ -95,12 +106,13 @@ set noshowcmd
 	autocmd VimLeave *.tex !texclear %
 
 " Ensure files are read as what I want:
-	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+	let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 	map <leader>v :VimwikiIndex
 	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
+	autocmd BufRead,BufNewFile *.rmd,*.Rmd set filetype=rmarkdown
 
 " Save file as sudo on files that require root permission
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
@@ -146,3 +158,14 @@ function! ToggleHiddenAll()
     endif
 endfunction
 nnoremap <leader>h :call ToggleHiddenAll()<CR>
+
+" Vim-calendar
+let g:calendar_monday = 1
+
+" Vim-xkbswitch
+let g:XkbSwitchEnabled = 1
+
+" Colortheme
+let g:gruvbox_transparent_bg=1
+set bg=dark
+colorscheme gruvbox
