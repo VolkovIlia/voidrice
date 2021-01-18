@@ -37,6 +37,5 @@ c.bindings.key_mappings = {
 c.url.start_pages = ["https://www.google.com/"]
 c.url.searchengines = {"DEFAULT": "https://www.google.fi/search?q={}"}
 c.spellcheck.languages = ["en-US", "ru-RU"]
-config.bind('<z>',"spawn --userscript qute-zotero", mode='normal')
 c.content.pdfjs = True
 c.auto_save.session = True

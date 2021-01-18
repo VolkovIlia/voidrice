@@ -8,30 +8,32 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
-Plug 'tpope/vim-surround'
-Plug 'preservim/nerdtree'
-Plug 'junegunn/goyo.vim'
-Plug 'jreybert/vimagit'
-Plug 'lukesmithxyz/vimling'
-Plug 'vimwiki/vimwiki'
-Plug 'bling/vim-airline'
-Plug 'tpope/vim-commentary'
-Plug 'ap/vim-css-color'
-Plug 'vimwiki/vimwiki'
-Plug 'preservim/tagbar'
-Plug 'blindFS/vim-taskwarrior'
-Plug 'mattn/calendar-vim'
 Plug 'SirVer/ultisnips'
+Plug 'ap/vim-css-color'
+Plug 'blindFS/vim-taskwarrior'
+Plug 'bling/vim-airline'
+Plug 'chrisbra/Colorizer'
+Plug 'honza/vim-snippets'
+Plug 'jreybert/vimagit'
+Plug 'junegunn/goyo.vim'
+Plug 'lukesmithxyz/vimling'
 Plug 'lyokha/vim-xkbswitch'
-Plug 'tools-life/taskwiki'
+Plug 'mattn/calendar-vim'
 Plug 'morhetz/gruvbox'
+Plug 'neoclide/coc.nvim'
+Plug 'preservim/nerdtree'
+Plug 'preservim/tagbar'
+Plug 'tools-life/taskwiki'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
-Plug 'vim-pandoc/vim-pandoc'
+Plug 'vimwiki/vimwiki'
+Plug 'dhruvasagar/vim-table-mode'
 call plug#end()
 
 set title
-set bg=light
 set go=a
 set mouse=a
 set nohlsearch
@@ -40,6 +42,7 @@ set noshowmode
 set noruler
 set laststatus=0
 set noshowcmd
+set spelllang=en,ru
 
 " Some basics:
 	nnoremap c "_c
@@ -57,7 +60,7 @@ set noshowcmd
 " Goyo plugin makes text more readable when writing prose:
 	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
 " Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=en_us<CR>
+	map <leader>o :setlocal spell! spelllang=en_us,ru<CR>
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
 
@@ -106,9 +109,9 @@ set noshowcmd
 	autocmd VimLeave *.tex !texclear %
 
 " Ensure files are read as what I want:
-	let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+	"let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 	map <leader>v :VimwikiIndex
-	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+	"let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
@@ -166,6 +169,25 @@ let g:calendar_monday = 1
 let g:XkbSwitchEnabled = 1
 
 " Colortheme
-let g:gruvbox_transparent_bg=1
-set bg=dark
+"set bg=dark
 colorscheme gruvbox
+"let g:gruvbox_transparent_bg=1
+hi Normal guibg=NONE ctermbg=NONE
+
+"Ultisnippets
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<c-f>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
+
+"vimwiki
+let g:vimwiki_table_mappings=0
+let g:vimwiki_table_auto_fmt=0
+map <leader>wl <Plug>VimwikiToggleListItem
+map <leader>wd <Plug>VimwikiMakeDiaryNote
+map <leader>wg <Plug>VimwikiDiaryGenerateLinks
+map <Leader>wD <Plug>VimwikiDeleteLink
+map <Leader>wn <Plug>VimwikiNextLink
+map <Leader>wp <Plug>VimwikiPrevLink
+
+"Collors code
+let g:colorizer_auto_color = 1

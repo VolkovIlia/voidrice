@@ -14,6 +14,8 @@ video/x-matroska=video.desktop
 x-scheme-handler/lbry=lbry.desktop
 inode/directory=file.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-22N6W0.desktop
+x-scheme-handler/msteams=teams.desktop
 
 [Added Associations]
 x-scheme-handler/tg=userapp-Telegram Desktop-22N6W0.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
