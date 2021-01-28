@@ -112,7 +112,7 @@ set spelllang=en,ru
 	"let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 	map <leader>v :VimwikiIndex
 	"let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
-	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
+	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=vimwiki
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
 	autocmd BufRead,BufNewFile *.rmd,*.Rmd set filetype=rmarkdown
@@ -122,11 +122,10 @@ set spelllang=en,ru
 
 " Enable Goyo by default for mutt writing
 	autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
-	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo | set bg=light
+	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo | setlocal spell spelllang=en,ru
 	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
 	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
-
-" Automatically deletes all trailing whitespace and newlines at end of file on save.
+	" Automatically deletes all trailing whitespace and newlines at end of file on save.
 	autocmd BufWritePre * %s/\s\+$//e
 	autocmd BufWritePre * %s/\n\+\%$//e
 
@@ -175,19 +174,46 @@ colorscheme gruvbox
 hi Normal guibg=NONE ctermbg=NONE
 
 "Ultisnippets
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<c-f>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
+" let g:UltiSnipsExpandTrigger = "<tab>"
+" let g:UltiSnipsJumpForwardTrigger = "<c-f>"
+" let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
 
 "vimwiki
-let g:vimwiki_table_mappings=0
-let g:vimwiki_table_auto_fmt=0
-map <leader>wl <Plug>VimwikiToggleListItem
-map <leader>wd <Plug>VimwikiMakeDiaryNote
-map <leader>wg <Plug>VimwikiDiaryGenerateLinks
-map <Leader>wD <Plug>VimwikiDeleteLink
-map <Leader>wn <Plug>VimwikiNextLink
-map <Leader>wp <Plug>VimwikiPrevLink
+" let g:vimwiki_table_mappings=0
+" let g:vimwiki_table_auto_fmt=0
+" map <leader>wl <Plug>VimwikiToggleListItem
+" map <leader>wd <Plug>VimwikiMakeDiaryNote
+" map <leader>wg <Plug>VimwikiDiaryGenerateLinks
+" map <Leader>wD <Plug>VimwikiDeleteLink
+" map <Leader>wn <Plug>VimwikiNextLink
+" map <Leader>wp <Plug>VimwikiPrevLink
 
 "Collors code
 let g:colorizer_auto_color = 1
+
+set nobackup                            " This is recommended by coc
+set nowritebackup                       " This is recommended by coc
+
+nnoremap <M-H>    :vertical resize -2<CR>
+nnoremap <M-L>    :vertical resize +2<CR>
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif

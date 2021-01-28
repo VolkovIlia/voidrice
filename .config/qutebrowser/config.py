@@ -39,3 +39,7 @@ c.url.searchengines = {"DEFAULT": "https://www.google.fi/search?q={}"}
 c.spellcheck.languages = ["en-US", "ru-RU"]
 c.content.pdfjs = True
 c.auto_save.session = True
+config.bind(';t', 'hint userscript link translate')
+config.bind(';T', 'hint userscript all translate --text')
+config.bind('<Ctrl+T>', 'spawn --userscript translate')
+config.bind('<Ctrl+Shift+T>', 'spawn --userscript translate --text')

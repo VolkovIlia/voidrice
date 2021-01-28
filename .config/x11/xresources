@@ -16,7 +16,7 @@
 
 !! gruvbox:
 *.color0: #1d2021
-*.color1: #9d0006
+*.color1: #cc241d
 *.color2: #98971a
 *.color3: #d79921
 *.color4: #458588
