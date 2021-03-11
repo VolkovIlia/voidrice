@@ -9,6 +9,7 @@ endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'SirVer/ultisnips'
+Plug 'sk1418/HowMuch'
 Plug 'ap/vim-css-color'
 Plug 'blindFS/vim-taskwarrior'
 Plug 'bling/vim-airline'
@@ -111,7 +112,7 @@ set spelllang=en,ru
 " Ensure files are read as what I want:
 	"let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 	map <leader>v :VimwikiIndex
-	"let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=vimwiki
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
@@ -217,3 +218,9 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
+
+"Calculations
+
+map gbc yypkA =<Esc>jOscale=2<Esc>:.,+1!bc<CR>kJ
+
+let g:HowMuch_scale = 15

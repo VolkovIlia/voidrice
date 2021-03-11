@@ -1,3 +1,4 @@
+config.load_autoconfig(False)
 config.bind('<Ctrl-z>', 'hint links userscript qute-zotero')
 c.bindings.key_mappings = {
     'Й': 'Q', 'й': 'q',
@@ -43,3 +44,4 @@ config.bind(';t', 'hint userscript link translate')
 config.bind(';T', 'hint userscript all translate --text')
 config.bind('<Ctrl+T>', 'spawn --userscript translate')
 config.bind('<Ctrl+Shift+T>', 'spawn --userscript translate --text')
+c.zoom.default = '125%'
